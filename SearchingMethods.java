@@ -1,21 +1,8 @@
 package analyzer;
 
 public interface SearchingMethods {
-    static   int[] computePrefixTable(byte[] pattern) {
-        int[] prefixTable = new int[pattern.length];
-        int j = 0;
-        for (int i = 1; i < pattern.length; i++) {
-            while (j > 0 && pattern[i] != pattern[j]) {
-                j = prefixTable[j - 1];
-            }
-            if (pattern[i] == pattern[j]) {
-                j++;
-            }
-            prefixTable[i] = j;
-        }
-        return prefixTable;
-    }
-     static boolean searchPatternKMP(byte[] text, byte[] pattern) {
+
+    static boolean searchPatternKMP(byte[] text, byte[] pattern) {
         if (pattern.length == 0) {
             return true; // Ak je pattern prázdny, vždy je nájdený
         }
@@ -34,6 +21,21 @@ public interface SearchingMethods {
             }
         }
         return false; // Pattern nenájdený
+    }
+
+    static int[] computePrefixTable(byte[] pattern) {
+        int[] prefixTable = new int[pattern.length];
+        int j = 0;
+        for (int i = 1; i < pattern.length; i++) {
+            while (j > 0 && pattern[i] != pattern[j]) {
+                j = prefixTable[j - 1];
+            }
+            if (pattern[i] == pattern[j]) {
+                j++;
+            }
+            prefixTable[i] = j;
+        }
+        return prefixTable;
     }
 }
 
