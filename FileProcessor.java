@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-public class FileProcessor  {
+public class FileProcessor {
 
     public void processFiles(List<File> listOfFiles, String fileType, String filePattern) {
         ExecutorService executor = Executors.newFixedThreadPool(10);
