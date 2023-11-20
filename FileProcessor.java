@@ -50,7 +50,6 @@ public class FileProcessor {
                 while (matcher.find()) {
                     matches.add(matcher.group(1));
                 }
-
                 if (matches.size() >= 2) {
                     List<String> patternAndType = new ArrayList<>();
                     patternAndType.add(matches.get(0));
