@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class FileProcessor  {
+public class FileProcessor {
 
     public void processFiles(List<File> listOfFiles, String fileType, String filePattern) {
         ExecutorService executor = Executors.newFixedThreadPool(10);
