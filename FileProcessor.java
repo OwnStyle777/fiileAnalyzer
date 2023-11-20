@@ -1,13 +1,13 @@
 package analyzer;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class FileProcessor  {
 
@@ -35,5 +35,33 @@ public class FileProcessor  {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public LinkedHashMap<List<String>, String> getMapOfPatterns(File file) {
+        LinkedHashMap<List<String>, String> mapOfPatterns = new LinkedHashMap<>();
+        Pattern pattern = Pattern.compile("\"(.*?)\"");
+
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                Matcher matcher = pattern.matcher(line);
+
+                List<String> matches = new ArrayList<>();
+                while (matcher.find()) {
+                    matches.add(matcher.group(1));
+                }
+
+                if (matches.size() >= 2) {
+                    List<String> patternAndType = new ArrayList<>();
+                    patternAndType.add(matches.get(0));
+                    patternAndType.add(matches.get(1));
+                    mapOfPatterns.put((patternAndType), line.substring(0,1));
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return mapOfPatterns;
     }
 }
