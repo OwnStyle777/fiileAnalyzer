@@ -13,5 +13,5 @@ To use the program, follow these steps:
 2. Run the program by providing a directory path containing the files you want to analyze as a command-line argument.
 
 Example:
-```bash
+
 java Main /path/to/directory
