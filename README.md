@@ -15,3 +15,10 @@ To use the program, follow these steps:
 Example:
 
 java Main /path/to/directory
+
+
+
+
+*GUI = Graphical User Interface
+
+Author: Martin Haronik, project idea from Hyperskill.
